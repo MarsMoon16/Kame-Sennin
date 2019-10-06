@@ -1,19 +1,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Kame Sennin</title>
-<meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE" />
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link rel="stylesheet" type="text/css" href="style.css"/>
-</head>
+  <head>
+    <title>Kame Sennin</title>
+    <meta name="ROBOTS" content="NOINDEX,NOFOLLOW,NOARCHIVE" />
+    <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  
 <body>
 <div class="top">
 <h1>Session</h1>
-
-<div class="content">
-<a href="index.php"><button>Done</button></a>
-</div>
+  </div>
+  
+  <div class="content">
+    <a href="session.php?pn=1"><button>Pompes+10</button></a>
+    <a href="index.php"><button>Done</button></a>
+  </div>
 
 
   <!-- Bottom -->
@@ -26,3 +29,9 @@ echo ". il est ". date("h:ia");  ?></p>
 </div>
 </body>
 </html>
+
+<?php 
+$nbpompes = 0;
+$sessionfile = fopen("session.txt", "a") or die("Unable to open Iplog file!");
+fwrite($ipfile, date("d/m/Y")." : ".date("H:i")." :".$ipClient."\r");
+fclose($ipfile);
