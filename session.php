@@ -8,10 +8,25 @@
   <link rel="stylesheet" type="text/css" href="style.css"/>
     
     <?php 
-$sessionfile = fopen("session.txt", "r") or die("Unable to open session's file!");
-fgets($sessionfile); //throw the first line away 
-$nbpompes = fgets($sessionfile); //get the value
-fclose($sessionfile);
+	  function readSession($session){ //read the stats in session file and return an array
+		  $filename = "session".$session.".txt";
+		  
+		  $sessionfile = fopen($filename, "r") or die("Unable to open session's file!"); 
+		  fgets($sessionfile); //throw the first line away and get to the next
+		  $nbpompes = fgets($sessionfile); //get the value
+		  fgets($sessionfile);
+		  $nbabdos = fgets($sessionfile);
+		  fclose($sessionfile);
+		  
+		  $stat = array($nbpompes, $nbabdos);
+		  return $stat;
+	  }
+	  function writeSession($session, $stat){ //write the stats array in session file
+		  $filename = "session".$session.".txt";
+		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file!");
+		  fwrite($sessionfile, "nb pompes:\n".$stat[0]."\n"."nb abdos:\n".$stat[1]);
+		  fclose($sessionfile);
+	  }
     ?>
   </head>
   
@@ -21,8 +36,12 @@ fclose($sessionfile);
   </div>
   
   <div class="content">
-		<p>Nb pompes : <?php echo $nbpompes; ?></p>
+	  <?php 
+	  $stat = readSession(1);
+	  ?>
+	<p>Nb pompes : <?php echo($stat[0]); ?></p>
     <a href="session.php?pn=1"><button>Pompes+10</button></a>
+	  <p>Nb abdos : <?php echo($stat[1]); ?></p>
     <a href="index.php"><button>Done</button></a>
   </div>
 
