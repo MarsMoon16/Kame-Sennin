@@ -51,12 +51,12 @@
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
-		  <input type="hidden name="pn" value="1">
+		  <input type="hidden" name="pn" value="1">
 		<input type="submit" value="Pompes+10">
 						      </form>
 	<form action="session.php" method="post">
 	  <p>Nb abdos : <?php echo($stat[1]); ?></p>
-	   <input type="hidden name="an" value="1">
+	   <input type="hidden" name="an" value="1">
 		<input type="submit" value="Abdos+10">
 	</form>
     <a href="index.php"><button>Done</button></a>
