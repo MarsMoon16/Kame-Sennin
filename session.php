@@ -28,11 +28,11 @@
 		  fwrite($sessionfile, "nb pompes:\n".$stat[0]."\n"."nb abdos:\n".$stat[1]);
 		  fclose($sessionfile);
 	  }
-	  if ($_GET['pn'] == 1){
+	  if ($_POST['pn'] == 1){
 		  $stat = readSession($session);
 		  $stat[0] = $stat[0] + 10;
 		  writeSesion($session, $stat);
-	  } elseif ($_GET['an'] == 1){
+	  } elseif ($_POST['an'] == 1){
 		  $stat = readSession($session);
 		  $stat[1] = $stat[1] + 10;
 		  writeSesion($session, $stat);
@@ -47,12 +47,18 @@
   
   <div class="content">
 	  <?php 
-	  $stat = readSession(1);
+	  $stat = readSession($session);
 	  ?>
+	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
-    <a href="session.php?pn=1"><button>Pompes+10</button></a>
+		  <input type="hidden name="pn" value="1">
+		<input type="submit" value="Pompes+10">
+						      </form>
+	<form action="session.php" method="post">
 	  <p>Nb abdos : <?php echo($stat[1]); ?></p>
-	  <a href="session.php?an=1"><button>Abdos+10</button></a>
+	   <input type="hidden name="an" value="1">
+		<input type="submit" value="Abdos+10">
+	</form>
     <a href="index.php"><button>Done</button></a>
   </div>
 
