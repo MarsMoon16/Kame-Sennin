@@ -6,6 +6,13 @@
     <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" type="text/css" href="style.css"/>
+    
+    <?php 
+$sessionfile = fopen("session.txt", "r") or die("Unable to open session's file!");
+fgets($sessionfile); //throw the first line away 
+$nbpompes = fgets($sessionfile); //get the value
+fclose($sessionfile);
+    ?>
   </head>
   
 <body>
@@ -14,6 +21,7 @@
   </div>
   
   <div class="content">
+		<p>Nb pompes : <?php echo $nbpompes; ?></p>
     <a href="session.php?pn=1"><button>Pompes+10</button></a>
     <a href="index.php"><button>Done</button></a>
   </div>
@@ -30,8 +38,6 @@ echo ". il est ". date("h:ia");  ?></p>
 </body>
 </html>
 
-<?php 
-$nbpompes = 0;
-$sessionfile = fopen("session.txt", "a") or die("Unable to open Iplog file!");
-fwrite($ipfile, date("d/m/Y")." : ".date("H:i")." :".$ipClient."\r");
-fclose($ipfile);
+<?php
+//fwrite($ipfile, date("d/m/Y")." : ".date("H:i")." :".$ipClient."\r");
+?>
