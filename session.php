@@ -28,11 +28,11 @@
 		  fwrite($sessionfile, "nb pompes:\n".$stat[0]."\n"."nb abdos:\n".$stat[1]);
 		  fclose($sessionfile);
 	  }
-	  if ($_POST['pn'] == 1){
+	  if ($_POST["pn"] == 1){
 		  $stat = readSession($session);
 		  $stat[0] = $stat[0] + 10;
 		  writeSesion($session, $stat);
-	  } elseif ($_POST['an'] == 1){
+	  } elseif ($_POST["an"] == 1){
 		  $stat = readSession($session);
 		  $stat[1] = $stat[1] + 10;
 		  writeSesion($session, $stat);
