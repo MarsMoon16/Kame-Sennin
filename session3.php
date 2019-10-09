@@ -24,7 +24,8 @@
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
 		  $filename = "session".$session.".txt";
-		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file!");
+		  echo ($filename);
+		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
 		  fwrite($sessionfile, "nb pompes:\n".$stat[0]."\n"."nb abdos:\n".$stat[1]);
 		  fclose($sessionfile);
 	  }
