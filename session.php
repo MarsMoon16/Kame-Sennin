@@ -12,10 +12,14 @@
 	  function readSession($session){ //read the stats in session file and return an array
 		  $filename = "session".$session.".txt";
 		  $sessionfile = fopen($filename, "r") or die("Unable to open session's file!"); 
-		  fgets($sessionfile); //throw the first line away and get to the next
+		  $firstline = fgets($sessionfile); //throw the first line away and get to the next
+		  echo ("First line ".$firstline."\r");
 		  $nbpompes = fgets($sessionfile); //get the value
-		  fgets($sessionfile);
+		  echo ("nbpompes = ".$nbpompes."\r");
+		  $thirdline = fgets($sessionfile);
+		  echo ("third line is ".$thirdline."\r");
 		  $nbabdos = fgets($sessionfile);
+		  echo ("nbabdos = ".$nbabdos."\r");
 		  fclose($sessionfile);
 		  
 		  $stat = array($nbpompes, $nbabdos);
