@@ -33,6 +33,7 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
+	  /*
 	  if ($_POST["pn"] == 1){
 		  $stat[0] = $stat[0] + 10;
 		  writeSession($session, $stat);
@@ -41,6 +42,7 @@
 		  $stat[1] = $stat[1] + 20;
 		  writeSession($session, $stat);
 	  }
+	  */
 	  
 	  ?>
 	  <form action="session.php" method="post">
