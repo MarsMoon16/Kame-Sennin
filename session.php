@@ -27,7 +27,7 @@
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
 		  $filename = "session".$session.".txt";
-		  echo("In Write : ".$stat[0]." and ".$stat[1]."\n");
+		  echo("In Write : ".$stat[0]." and ".$stat[1]."<br>");
 		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
 		  fwrite($sessionfile, "nb pompes: "."\n".$stat[0]."\n"."nb abdos: "."\n".$stat[1]);
 		  fclose($sessionfile);
@@ -43,15 +43,18 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
+	  echo("<br>);
 	  if ($_POST["pn"] == 1){
 		  $temp = array($stat[0]+10, $stat[1]);
 		  echo("<br>on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."<br>");
 		  writeSession($session, $temp);
 	  }
+	  echo("<br>);
 	  elseif ($_POST["an"] == 1){
 		  $temp = array($stat[0], ($stat[1]+20));
 		  writeSession($session, $temp);
 	  }
+	  echo("<br>);
 	  $stat = readSession($session);
 	  ?>
 	  <form action="session.php" method="post">
