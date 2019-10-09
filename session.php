@@ -40,8 +40,8 @@
 	  $stat = readSession($session);
 	  
 	  if ($_POST["pn"] == 1){
-		  $stat[0] = $stat[0] + 10;
-		  writeSession($session, $stat);
+		  $temp = array($stat[0]+10, $stat[1]);
+		  writeSession($session, $temp);
 	  }
 	  /*
 	  elseif ($_POST["an"] == 1){
