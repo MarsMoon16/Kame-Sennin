@@ -39,6 +39,9 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
+	  echo ("slt");
+	  writeSession($session, $stat);
+	  echo ("after write");
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
