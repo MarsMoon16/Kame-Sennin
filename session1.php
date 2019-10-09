@@ -24,7 +24,6 @@
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
 		  $filename = "session".$session.".txt";
-		  echo ($filename);
 		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
 		  fwrite($sessionfile, "nb pompes:\r".$stat[0]."\r"."nb abdos:\r".$stat[1]);
 		  fclose($sessionfile);
@@ -44,7 +43,7 @@
 		  $stat[0] = $stat[0] + 10;
 		  writeSession($session, $stat);
 	  }
-	  elsif ($_POST["an"] == 1){
+	  elseif ($_POST["an"] == 1){
 		  $stat[1] = $stat[1] + 20;
 		  writeSession($session, $stat);
 	  }
