@@ -54,7 +54,7 @@
 		  $temp = array($stat[0], ($stat[1]+20));
 		  writeSession($session, $temp);
 	  }
-	  echo("<br>);
+	  echo("<br>");
 	  $stat = readSession($session);
 	  ?>
 	  <form action="session.php" method="post">
