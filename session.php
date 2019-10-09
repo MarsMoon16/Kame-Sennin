@@ -13,22 +13,22 @@
 		  $filename = "session".$session.".txt";
 		  $sessionfile = fopen($filename, "r") or die("Unable to open session's file!"); 
 		  $firstline = fgets($sessionfile); //throw the first line away and get to the next
-		  echo ("First line ".$firstline."\r");
+		  echo ("First line ".$firstline."\n");
 		  $nbpompes = fgets($sessionfile); //get the value
-		  echo ("nbpompes = ".$nbpompes."\r");
+		  echo ("nbpompes = ".$nbpompes."\n");
 		  $thirdline = fgets($sessionfile);
-		  echo ("third line is ".$thirdline."\r");
+		  echo ("third line is ".$thirdline."\n");
 		  $nbabdos = fgets($sessionfile);
-		  echo ("nbabdos = ".$nbabdos."\r");
+		  echo ("nbabdos = ".$nbabdos."\n");
 		  fclose($sessionfile);
 		  
 		  $stat = array($nbpompes, $nbabdos);
-		  echo("In Read : ".$stat[0]." and ".$stat[1]."\r");
+		  echo("In Read : ".$stat[0]." and ".$stat[1]."\n");
 		  return $stat;
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
 		  $filename = "session".$session.".txt";
-		  echo("In Write : ".$stat[0]." and ".$stat[1]."\r");
+		  echo("In Write : ".$stat[0]." and ".$stat[1]."\n");
 		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
 		  fwrite($sessionfile, "nb pompes: \n".$stat[0]."\n nb abdos: \n".$stat[1]);
 		  fclose($sessionfile);
@@ -44,10 +44,10 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\r");
+	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\n");
 	  if ($_POST["pn"] == 1){
 		  $temp = array($stat[0]+10, $stat[1]);
-		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."\r");
+		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."\n");
 		  writeSession($session, $temp);
 	  }
 	  elseif ($_POST["an"] == 1){
@@ -55,7 +55,7 @@
 		  writeSession($session, $temp);
 	  }
 	  $stat = readSession($session);
-	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\r");
+	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\n");
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
