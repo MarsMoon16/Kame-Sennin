@@ -26,7 +26,7 @@
 		  $filename = "session".$session.".txt";
 		  echo ($filename);
 		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
-		  fwrite($sessionfile, "nb pompes:\n".$stat[0]."\n"."nb abdos:\n".$stat[1]);
+		  fwrite($sessionfile, "nb pompes:\r".$stat[0]."\r"."nb abdos:\r".$stat[1]);
 		  fclose($sessionfile);
 	  }
     ?>
@@ -40,9 +40,13 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  echo ("slt");
+	  echo ("slt\r");
+	  echo ($stat[0]." and ".$stat[1]);
+	  $stat[0] = $stat[0] + 30;
 	  writeSession($session, $stat);
-	  echo ("after write");
+	  echo ("\r after write \r");
+	  echo ($stat[0]." and ".$stat[1]);
+	  echo ("\r \r");
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
