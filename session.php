@@ -66,6 +66,7 @@
 	  echo ("/r New stats : ."$stat[0]." et ".stat[1]."/r");
 	  $stat = readSession($session);
 	  echo ("/r New stats after read : ."$stat[0]." et ".stat[1]."/r");
+	  ?>
     <a href="index.php"><button>Done</button></a>
   </div>
 
