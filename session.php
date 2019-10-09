@@ -43,13 +43,13 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  echo("<br>);
+	  echo("<br>");
 	  if ($_POST["pn"] == 1){
 		  $temp = array($stat[0]+10, $stat[1]);
 		  echo("<br>on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."<br>");
 		  writeSession($session, $temp);
 	  }
-	  echo("<br>);
+	  echo("<br>");
 	  elseif ($_POST["an"] == 1){
 		  $temp = array($stat[0], ($stat[1]+20));
 		  writeSession($session, $temp);
