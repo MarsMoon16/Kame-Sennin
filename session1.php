@@ -40,13 +40,15 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  echo ("slt\r");
-	  echo ($stat[0]." and ".$stat[1]);
-	  $stat[0] = $stat[0] + 30;
-	  writeSession($session, $stat);
-	  echo ("\r after write \r");
-	  echo ($stat[0]." and ".$stat[1]);
-	  echo ("\r \r");
+	  if ($_POST["pn"] == 1){
+		  $stat[0] = $stat[0] + 10;
+		  writeSession($session, $stat);
+	  }
+	  elsif ($_POST["an"] == 1){
+		  $stat[1] = $stat[1] + 20;
+		  writeSession($session, $stat);
+	  }
+	  
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
@@ -56,7 +58,7 @@
 	<form action="session.php" method="post">
 	  <p>Nb abdos : <?php echo($stat[1]); ?></p>
 	   <input type="hidden" name="an" value="1">
-		<input type="submit" value="Abdos+10">
+		<input type="submit" value="Abdos+20">
 	</form>
     <a href="index.php"><button>Done</button></a>
   </div>
