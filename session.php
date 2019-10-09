@@ -50,12 +50,10 @@
 		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."/r");
 		  writeSession($session, $temp);
 	  }
-	  /*
 	  elseif ($_POST["an"] == 1){
 		  $stat[1] = $stat[1] + 20;
 		  writeSession($session, $stat);
 	  }
-	  */
 	  
 	  ?>
 	  <form action="session.php" method="post">
