@@ -19,6 +19,7 @@
 		  fclose($sessionfile);
 		  
 		  $stat = array($nbpompes, $nbabdos);
+		  echo("In Read : ".$stat[0]." and ".$stat[1]."\r");
 		  return $stat;
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
