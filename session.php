@@ -13,24 +13,24 @@
 		  $filename = "session".$session.".txt";
 		  $sessionfile = fopen($filename, "r") or die("Unable to open session's file!"); 
 		  $firstline = fgets($sessionfile); //throw the first line away and get to the next
-		  echo ("First line ".$firstline."\n");
+		  echo ("First line ".$firstline."<br>");
 		  $nbpompes = fgets($sessionfile); //get the value
-		  echo ("nbpompes = ".$nbpompes."\n");
+		  echo ("nbpompes = ".$nbpompes."<br>");
 		  $thirdline = fgets($sessionfile);
-		  echo ("third line is ".$thirdline."\n");
+		  echo ("third line is ".$thirdline."<br>");
 		  $nbabdos = fgets($sessionfile);
-		  echo ("nbabdos = ".$nbabdos."\n");
+		  echo ("nbabdos = ".$nbabdos."<br>");
 		  fclose($sessionfile);
 		  
 		  $stat = array($nbpompes, $nbabdos);
-		  echo("In Read : ".$stat[0]." and ".$stat[1]."\n");
+		  echo("In Read : ".$stat[0]." and ".$stat[1]."<br>");
 		  return $stat;
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
 		  $filename = "session".$session.".txt";
 		  echo("In Write : ".$stat[0]." and ".$stat[1]."\n");
 		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
-		  fwrite($sessionfile, "nb pompes: \n".$stat[0]."\n nb abdos: \n".$stat[1]);
+		  fwrite($sessionfile, "nb pompes: \r".$stat[0]."\r nb abdos: \r".$stat[1]);
 		  fclose($sessionfile);
 	  }
     ?>
