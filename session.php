@@ -10,9 +10,14 @@
     <?php 
 	  $session = 1;
 	  function readSession($session){ //read the stats in session file and return an array
-		  $xml=simplexml_load_file("session".$session.".xml") or die("Error: Cannot open session".$session.".xml");
-		  $nbpompes = $xml->pompes;
-		  $nbabdos = $xml->abdos;
+		  $filename = "session".$session.".txt";
+		  $sessionfile = fopen($filename, "r") or die("Unable to open session's file!"); 
+		  fgets($sessionfile); //throw the first line away and get to the next
+		  $nbpompes = fgets($sessionfile); //get the value
+		  fgets($sessionfile);
+		  $nbabdos = fgets($sessionfile);
+		  fclose($sessionfile);
+		  
 		  $stat = array($nbpompes, $nbabdos);
 		  return $stat;
 	  }
@@ -55,6 +60,12 @@
 	   <input type="hidden" name="an" value="1">
 		<input type="submit" value="Abdos+20">
 	</form>
+	  <?php 
+	  $stat[0] = $stat[0] + 10;
+	  writeSession($session, $stat);
+	  echo ("/r New stats : ."$stat[0]." et ".stat[1]."/r");
+	  $stat = readSession($session);
+	  echo ("/r New stats after read : ."$stat[0]." et ".stat[1]."/r");
     <a href="index.php"><button>Done</button></a>
   </div>
 
