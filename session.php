@@ -44,17 +44,18 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."/r");
+	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\r");
 	  if ($_POST["pn"] == 1){
 		  $temp = array($stat[0]+10, $stat[1]);
-		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."/r");
+		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."\r");
 		  writeSession($session, $temp);
 	  }
 	  elseif ($_POST["an"] == 1){
-		  $stat[1] = $stat[1] + 20;
-		  writeSession($session, $stat);
+		  $temp = array($stat[0], $stat[1]+20);
+		  writeSession($session, $temp);
 	  }
-	  
+	  $stat = readSession($session);
+	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\r");
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
