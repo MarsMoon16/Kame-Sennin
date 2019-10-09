@@ -39,9 +39,10 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  
+	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."/r");
 	  if ($_POST["pn"] == 1){
 		  $temp = array($stat[0]+10, $stat[1]);
+		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."/r");
 		  writeSession($session, $temp);
 	  }
 	  /*
