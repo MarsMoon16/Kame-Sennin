@@ -29,7 +29,7 @@
 		  $filename = "session".$session.".txt";
 		  echo("In Write : ".$stat[0]." and ".$stat[1]."\n");
 		  $sessionfile = fopen($filename, "w") or die("Unable to open session's file! in writeSession");
-		  fwrite($sessionfile, "nb pompes: "."\n".$stat[0]."nb abdos: "."\n".$stat[1]);
+		  fwrite($sessionfile, "nb pompes: "."\n".$stat[0]."\n"."nb abdos: "."\n".$stat[1]);
 		  fclose($sessionfile);
 	  }
     ?>
@@ -49,7 +49,7 @@
 		  writeSession($session, $temp);
 	  }
 	  elseif ($_POST["an"] == 1){
-		  $temp = array($stat[0], $stat[1]+20);
+		  $temp = array($stat[0], ($stat[1]+20));
 		  writeSession($session, $temp);
 	  }
 	  $stat = readSession($session);
