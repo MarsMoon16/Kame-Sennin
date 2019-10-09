@@ -23,7 +23,6 @@
 		  fclose($sessionfile);
 		  
 		  $stat = array($nbpompes, $nbabdos);
-		  echo("In Read : ".$stat[0]." and ".$stat[1]."<br>");
 		  return $stat;
 	  }
 	  function writeSession($session, $stat){ //write the stats array in session file
@@ -44,10 +43,9 @@
   <div class="content">
 	  <?php 
 	  $stat = readSession($session);
-	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\n");
 	  if ($_POST["pn"] == 1){
 		  $temp = array($stat[0]+10, $stat[1]);
-		  echo("on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."\n");
+		  echo("<br>on est dans le if, temp vaut: ".$temp[0]." et ".$temp[1]."<br>");
 		  writeSession($session, $temp);
 	  }
 	  elseif ($_POST["an"] == 1){
@@ -55,7 +53,6 @@
 		  writeSession($session, $temp);
 	  }
 	  $stat = readSession($session);
-	  echo("stat vient d'etre lu et vaut : ".$stat[0]." et ".$stat[1]."\n");
 	  ?>
 	  <form action="session.php" method="post">
 	<p>Nb pompes : <?php echo($stat[0]); ?></p>
