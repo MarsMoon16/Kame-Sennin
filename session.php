@@ -10,15 +10,9 @@
     <?php 
 	  $session = 1;
 	  function readSession($session){ //read the stats in session file and return an array
-		  $filename = "session".$session.".txt";
-		  
-		  $sessionfile = fopen($filename, "r") or die("Unable to open session's file!"); 
-		  fgets($sessionfile); //throw the first line away and get to the next
-		  $nbpompes = fgets($sessionfile); //get the value
-		  fgets($sessionfile);
-		  $nbabdos = fgets($sessionfile);
-		  fclose($sessionfile);
-		  
+		  $xml=simplexml_load_file("session".$session.".xml") or die("Error: Cannot open session".$session.".xml");
+		  $nbpompes = $xml->pompes;
+		  $nbabdos = $xml->abdos;
 		  $stat = array($nbpompes, $nbabdos);
 		  return $stat;
 	  }
